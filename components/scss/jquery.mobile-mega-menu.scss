@@ -1,0 +1,179 @@
+/* 
+
+Blake Cerecero
+Blake@DigitalBlake.com
+http://DigitalBlake.com
+@blakecerecero
+
+*/
+
+// Mixins -------------------------------------->
+@mixin transition ($type: all, $time: 300ms, $ease: linear) {
+    -webkit-transition	: $type $time $ease;
+    -moz-transition		: $type $time $ease;
+    -ms-transition		: $type $time $ease;
+    -o-transition		: $type $time $ease;
+    transition			: $type $time $ease;
+}
+
+
+@mixin transform ($x: 0px, $y: 0px, $z: 0px) {
+	-webkit-transform: 	translate3d($x, $y, $z);
+	-moz-transform: 	translate3d($x, $y, $z);
+	-ms-transform: 		translate3d($x, $y, $z);
+	-o-transform: 		translate3d($x, $y, $z);
+	transform: 			translate3d($x, $y, $z);
+}
+
+// Variables ------------------------------------>
+	$animation-speed: 250ms;
+
+// Base ----------------------------------------->
+* {
+    border-box: box-sizing;
+}
+body, html{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+html {
+	/* Prevent font scaling in landscape */
+    -webkit-text-size-adjust: 100%; 
+}
+
+.content-container{
+	margin: 0 20px 20px 20px;
+}
+.inner-container{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+a.toggle-menu{
+	position: absolute;
+	z-index: 200;
+	top: 0;
+	left: 0;
+	width: 95%;
+	height: 20px;
+	float: left;
+	padding: 15px 2.5%;
+	background: rgb(70, 81, 160);
+	text-align: center;
+	text-decoration: none;
+	color: rgb(255,255,255);
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 200;
+	font-size: 1.1em;
+}
+
+
+/* ---------------------- Plugin starts here ---------------------- */
+.canvas-container{
+	min-height: 100%; /* Set min-height so that off-canvas-menu background pushes to bottom */
+	width: 100%; /* Full width so that content-container pulls to center */
+	position: relative; /* Position relative so that off-canvas-menu background pulls to the bottom */
+	-webkit-overflow-scrolling: touch; /* Prevent choppy scroll on mobile */
+}
+
+.mobile-mega-menu{
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+	margin-bottom: -50px;
+	top: 0;
+	bottom: 0;
+	left: -100%;
+	position: absolute;
+	overflow: hidden;
+	background: rgb(5,5,5);
+	background: rgba(0,0,0,0);
+	@include transition (all, $animation-speed, linear);
+    -webkit-transform: translatez(0);
+	&.open{
+		@include transform (100%);
+		background: rgb(5,5,5);
+		background: rgba(0,0,0,.8);
+	}
+	&.open-modernizer{
+		left: 0;
+	}
+	nav{
+		/* Fixes Issue on IE6 that creates gaps between UL tags
+		   Goes along with the top:0 on the ul below. */
+		position: relative;
+	}
+	.widget-region{
+		background: rgb(255,255,255);
+		padding: 10px 20px;
+		clear: both;
+	}
+	ul{
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		top: 0;
+		right: 0;
+		position: absolute;
+		list-style-type: none;
+	    @include transition (all, $animation-speed, linear);
+		/* 
+		When there are no elements next to a tall ul then the page does not get
+		a repaint leaving an after shadow of the previous element on screen. Adding
+		translatez prevents this from happening.
+		*/
+	    -webkit-transform: translatez(0);
+	   	&.has-been-viewed{
+			@include transform (-100%);
+		}
+		li{
+			ul{
+				left: 100%;
+			}
+			a{
+				width: 95%;
+				margin: 0;
+				padding: 15px 2.5%;
+				float: left;
+				
+				text-decoration: none;
+				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+				font-weight: 300;
+				font-size: 1.1em;
+				color: rgb(0,0,0);
+				background: rgb(234, 228, 255);
+				text-shadow: 1px 1px 1px rgb(255,255,255);
+				border-bottom: 1px solid rgb(187, 189, 211);
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+				&.has-toggle{
+					width: 75%;
+				}
+				&.toggle{
+					width: 15%;
+					text-align: center;
+					color: rgb(255,255,255);
+					text-shadow: none;
+					text-indent: 0px;
+					background: url(../images/arrow-2-forward.png) 50% 50% no-repeat rgb(78, 151, 179);
+					background-size: 50px 50px;
+					& .arrow{
+						visibility: hidden;
+					}
+				}
+				&.back-button{
+					text-indent: 50px;
+					background: url(../images/arrow-2-back.png) 0 50% no-repeat rgb(78, 151, 179);
+					background-size: 50px 50px;
+					color: rgb(255,255,255);
+					text-shadow: none;
+				}
+			} // end a
+			&:last-child > a{
+				border-bottom: none;
+			}
+			&:first-child > a{
+				border-top: none;
+			}
+		}
+	}
+}
