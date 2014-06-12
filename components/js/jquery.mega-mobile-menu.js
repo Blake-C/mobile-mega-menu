@@ -16,11 +16,12 @@ http://DigitalBlake.com
 			// Every default goes within the { } brackets as seen below
 			// A comma separates the different values
 			var defaults = {
-				resetMenu: false,
-				menuClass: '.mobile-mega-menu',
 				changeToggleText: true,
-				toogleTextOnClose: 'Close Menu',
-				enableWidgetRegion: false
+				enableWidgetRegion: false,
+				menuClass: '.mobile-mega-menu',
+				resetMenu: false,
+				stayOnActive: true,
+				toogleTextOnClose: 'Close Menu'
 			};
 
 			var settings = $.extend(defaults, options);
@@ -31,35 +32,45 @@ http://DigitalBlake.com
 				var animationSpeed = 250;
 				var currentText = $('a.toggle-menu').html();
 
-				/*
-				Add toggle button to main menu items with sub menus and add back button to top of
-				every sub ul after the root
-				*/
+				/* ------------------------- Add toggle button to main menu items with sub menus and add back button to top of every sub ul after the root */
 				$(settings.menuClass + ' ul ul').before('<a class="toggle" href="#"><div class="arrow">Next</div></a>').siblings('a:first-of-type').addClass('has-toggle');
 				$(settings.menuClass + ' ul ul').prepend('<li><a class="back-button" href="#">Back</a></li>');
 
-				// Stop Animation on touch/tap/click
+				// Stop scroll to top Animation on touch/tap/click
 				$('html, body').on('touchstart click', function(){
 					$("html, body").stop();
 				});
 
-				/* 
-				Set a variable to calculate height of the tallest ul in the menu, then set that height as the
-				min-height of the menu container
-				*/
+				/* ------------------------- Generate and move Widget Region */
+				if(settings.enableWidgetRegion === true){	
+					var element = $(settings.menuClass + ' .widget-region').detach();
+					$(settings.menuClass + ' ul:first-child').append(element);
+				}
+
+				/* ------------------------- Set a variable to calculate height of the tallest ul in the menu, then set that height as the min-height of the menu container */
 				var maxHeight = -1;
 
 				$(settings.menuClass + ' ul').each(function(){
 					maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
 				});
 
-				/* Added 50px to min height to solve issue with last menu item being hidden */
+					/* Added 50px to min height to solve issue with last menu item being hidden on desktop */
 				$(settings.menuClass).css('min-height', maxHeight + 50).hide();
 
-				/* Generate and move Widget Region */
-				if(settings.enableWidgetRegion === true){	
-					var element = $(settings.menuClass + ' .widget-region').detach();
-					$(settings.menuClass + ' ul:first-child').append(element);
+				/* ------------------------- Set active menu item as is-in-view */
+				if (settings.stayOnActive === true){
+					var url = window.location.href;
+
+					// Will only work if string in href matches with location
+					//$(settings.menuClass + ' ul li a[href="'+ url +'"]').addClass('active');
+					
+					// Will also work for relative and absolute hrefs
+					$(settings.menuClass + ' ul li a').filter(function() {
+						return this.href === url;
+					}).addClass('active');
+
+					$(settings.menuClass + ' a.active').closest('ul').addClass('is-in-view').parents('ul').addClass('has-been-viewed');
+					$(settings.menuClass + ' a.active').closest('ul').parents().siblings('li').find('ul').hide();
 				}
 
 				/* ------------------------- Toggle Menu ------------------------- */
