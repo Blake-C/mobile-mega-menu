@@ -4,14 +4,12 @@ Mobile-Mega-Menu
 The mobile mega menu is designed to allow for deep menu structures to be navigated easily on mobile devices. It has a left-right animation that makes it easy to understand where you are in the menu hierarchy.
 
 ##Preview
----
 Must use preview link in Chrome, otherwise download and preview index.html.
 
 http://htmlpreview.github.io/?https://github.com/Blake-C/Mobile-Mega-Menu/blob/master/index.html
 
 
 ##Usage
----
 Add Mobile Mega Menu CSS
 ```html
 	<link rel="stylesheet" href="css/jquery.mobile-mega-menu.min.css">
@@ -41,7 +39,6 @@ Initiate Plugin
 ```
 
 ## Options
----
 **changeToggleText** - default - true
 - Use this with toogleTextOnClose to change the text of the button that will open your menu.
 
@@ -58,7 +55,6 @@ Initiate Plugin
 - When set to true, the menu level where you select a page will be present the first time you open the menu after the page loads again.
 
 ##Contact
----
    * Twitter: [https://twitter.com/BlakeCerecero][1]
    * Portfolio: [http://digitalblake.com/][2]
    
