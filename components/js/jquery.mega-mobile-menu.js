@@ -18,7 +18,6 @@ http://DigitalBlake.com
 			var defaults = {
 				changeToggleText: true,
 				enableWidgetRegion: false,
-				menuClass: '.mobile-mega-menu',
 				resetMenu: false,
 				stayOnActive: true,
 				toogleTextOnClose: 'Close Menu'
@@ -29,12 +28,13 @@ http://DigitalBlake.com
 			return this.each(function() {
 				/* ------------------------- Plugin Starts Here ------------------------- */
 				/* Variables */
-				var animationSpeed = 250;
+				var animationSpeed = 250;  // Change SCSS to match this speed
 				var currentText = $('a.toggle-menu').html();
+				var menuClass = '.mobile-mega-menu';
 
 				/* ------------------------- Add toggle button to main menu items with sub menus and add back button to top of every sub ul after the root */
-				$(settings.menuClass + ' ul ul').before('<a class="toggle" href="#"><div class="arrow">Next</div></a>').siblings('a:first-of-type').addClass('has-toggle');
-				$(settings.menuClass + ' ul ul').prepend('<li><a class="back-button" href="#">Back</a></li>');
+				$(menuClass + ' ul ul').before('<a class="toggle" href="#"><div class="arrow">Next</div></a>').siblings('a:first-of-type').addClass('has-toggle');
+				$(menuClass + ' ul ul').prepend('<li><a class="back-button" href="#">Back</a></li>');
 
 				// Stop scroll to top Animation on touch/tap/click
 				$('html, body').on('touchstart click', function(){
@@ -43,34 +43,34 @@ http://DigitalBlake.com
 
 				/* ------------------------- Generate and move Widget Region */
 				if(settings.enableWidgetRegion === true){	
-					var element = $(settings.menuClass + ' .widget-region').detach();
-					$(settings.menuClass + ' ul:first-child').append(element);
+					var element = $(menuClass + ' .widget-region').detach();
+					$(menuClass + ' ul:first-child').append(element);
 				}
 
 				/* ------------------------- Set a variable to calculate height of the tallest ul in the menu, then set that height as the min-height of the menu container */
 				var maxHeight = -1;
 
-				$(settings.menuClass + ' ul').each(function(){
+				$(menuClass + ' ul').each(function(){
 					maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
 				});
 
 					/* Added 50px to min height to solve issue with last menu item being hidden on desktop */
-				$(settings.menuClass).css('min-height', maxHeight + 50).hide();
+				$(menuClass).css('min-height', maxHeight + 50).hide();
 
 				/* ------------------------- Set active menu item as is-in-view */
 				if (settings.stayOnActive === true){
 					var url = window.location.href;
 
 					// Will only work if string in href matches with location
-					//$(settings.menuClass + ' ul li a[href="'+ url +'"]').addClass('active');
+					//$(menuClass + ' ul li a[href="'+ url +'"]').addClass('active');
 					
 					// Will also work for relative and absolute hrefs
-					$(settings.menuClass + ' ul li a').filter(function() {
+					$(menuClass + ' ul li a').filter(function() {
 						return this.href === url;
 					}).addClass('active');
 
-					$(settings.menuClass + ' a.active').closest('ul').addClass('is-in-view').parents('ul').addClass('has-been-viewed');
-					$(settings.menuClass + ' a.active').closest('ul').parents().siblings('li').find('ul').hide();
+					$(menuClass + ' a.active').closest('ul').addClass('is-in-view').parents('ul').addClass('has-been-viewed');
+					$(menuClass + ' a.active').closest('ul').parents().siblings('li').find('ul').hide();
 				}
 
 				/* ------------------------- Toggle Menu ------------------------- */
@@ -78,8 +78,8 @@ http://DigitalBlake.com
 					event.preventDefault();
 
 					/* When the menu is first opened give the first ul its is-in-view class */
-					if (!$(settings.menuClass + ' ul:first-child').hasClass('has-been-viewed')){
-						$(settings.menuClass + ' ul:first-child').toggleClass('is-in-view');
+					if (!$(menuClass + ' ul:first-child').hasClass('has-been-viewed')){
+						$(menuClass + ' ul:first-child').toggleClass('is-in-view');
 					}
 					
 					/* Change text when the menu is open to show the option to close the menu */
@@ -99,13 +99,13 @@ http://DigitalBlake.com
 					*/
 					if (settings.resetMenu === true){
 
-						$(settings.menuClass).fadeIn(1, function(){
-							$(settings.menuClass).toggleClass('open').promise().done(function(){
-								if (!$(settings.menuClass).hasClass('open')) {
-									$(settings.menuClass).fadeOut();
+						$(menuClass).fadeIn(1, function(){
+							$(menuClass).toggleClass('open').promise().done(function(){
+								if (!$(menuClass).hasClass('open')) {
+									$(menuClass).fadeOut();
 
 									setTimeout(function() {
-										$(settings.menuClass + ' ul').removeClass('is-in-view has-been-viewed');
+										$(menuClass + ' ul').removeClass('is-in-view has-been-viewed');
 									}, animationSpeed);
 								}
 							});
@@ -113,10 +113,10 @@ http://DigitalBlake.com
 
 					} else {
 
-						$(settings.menuClass).fadeIn(1, function(){
-							$(settings.menuClass).toggleClass('open').promise().done(function(){
-								if (!$(settings.menuClass).hasClass('open')) {
-									$(settings.menuClass).fadeOut();
+						$(menuClass).fadeIn(1, function(){
+							$(menuClass).toggleClass('open').promise().done(function(){
+								if (!$(menuClass).hasClass('open')) {
+									$(menuClass).fadeOut();
 								}
 							});
 						});
@@ -166,14 +166,14 @@ http://DigitalBlake.com
 					$('a.toggle-menu').click(function(event){
 						event.preventDefault();
 
-						$(settings.menuClass).toggleClass('open-modernizer', animationSpeed);
+						$(menuClass).toggleClass('open-modernizer', animationSpeed);
 					});
 
 					/* Next */
 					$('a.toggle').click(function(event){
 						event.preventDefault();
 
-						$(settings.menuClass + ' ul').animate({
+						$(menuClass + ' ul').animate({
 							right: '+=100%'
 						}, animationSpeed);
 					});
@@ -182,7 +182,7 @@ http://DigitalBlake.com
 					$('a.back-button').click(function(event){
 						event.preventDefault();
 
-						$(settings.menuClass + ' ul').animate({
+						$(menuClass + ' ul').animate({
 							right: '-=100%'
 						}, animationSpeed);
 					});
