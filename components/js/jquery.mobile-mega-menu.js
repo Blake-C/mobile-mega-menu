@@ -10,7 +10,7 @@ http://DigitalBlake.com
 	jQuery.fn.extend({
 
 		// Plugin Name
-		megaMobileMenu: function(options){
+		mobileMegaMenu: function(options){
 
 			// Defaults options are set here
 			// Every default goes within the { } brackets as seen below
@@ -59,7 +59,8 @@ http://DigitalBlake.com
 
 				/* ------------------------- Set active menu item as is-in-view */
 				if (settings.stayOnActive === true){
-					var url = window.location.href;
+					var str = window.location.href;
+					var url = str.replace('#', '');
 
 					// Will only work if string in href matches with location
 					//$(menuClass + ' ul li a[href="'+ url +'"]').addClass('active');
@@ -191,6 +192,6 @@ http://DigitalBlake.com
 
 			}); // End this.each / End Plugin
 
-		} // End megaMobileMenu
+		} // End mobileMegaMenu
 	}); // End jQuery.fn.extend
 }( jQuery )); // End function
