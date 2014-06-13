@@ -18,6 +18,7 @@ http://DigitalBlake.com
 			var defaults = {
 				changeToggleText: true,
 				enableWidgetRegion: false,
+				prependCloseButton: false ,
 				resetMenu: false,
 				stayOnActive: true,
 				toogleTextOnClose: 'Close Menu'
@@ -72,6 +73,11 @@ http://DigitalBlake.com
 
 					$(menuClass + ' a.active').closest('ul').addClass('is-in-view').parents('ul').addClass('has-been-viewed');
 					$(menuClass + ' a.active').closest('ul').parents().siblings('li').find('ul').hide();
+				}
+	
+				/* ------------------------- Prepend Close Button ------------------------- */
+				if (settings.prependCloseButton === true){
+					$(menuClass + ' ul:first-of-type').prepend('<li><a class="close-button toggle-menu" href="#">Close Menu</a></li>');
 				}
 
 				/* ------------------------- Toggle Menu ------------------------- */
