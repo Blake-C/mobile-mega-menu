@@ -16,7 +16,7 @@ http://DigitalBlake.com
 			// Every default goes within the { } brackets as seen below
 			// A comma separates the different values
 			var defaults = {
-				changeToggleText: true,
+				changeToggleText: false,
 				enableWidgetRegion: false,
 				prependCloseButton: false ,
 				resetMenu: false,

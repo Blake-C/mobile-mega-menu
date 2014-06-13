@@ -43,21 +43,21 @@ html {
 }
 
 .content-container{
-	margin: 0 20px 20px 20px;
+	margin: 0 20px 0px 20px;
 }
 .inner-container{
-	padding-top: 50px;
+	padding-top: 0px;
 	padding-bottom: 50px;
 }
-a.toggle-menu-look{
+a.button{
 	// position: absolute;
-	z-index: 200;
-	top: 0;
-	left: 0;
-	width: 95%;
+	// z-index: 200;
+	// top: 0;
+	// left: 0;
+	// width: 95%;
 	height: 20px;
-	float: left;
-	padding: 15px 2.5%;
+	float: right;
+	padding: 15px 2.5% 20px 2.5%;
 	background: rgb(70, 81, 160);
 	text-align: center;
 	text-decoration: none;
