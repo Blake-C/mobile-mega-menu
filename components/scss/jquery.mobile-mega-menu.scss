@@ -87,12 +87,15 @@ a.button{
 	overflow: hidden;
 	background: rgb(5,5,5);
 	background: rgba(0,0,0,0);
+	-webkit-transform: translatez(0);
 	@include transition (all, $animation-speed, linear);
-    -webkit-transform: translatez(0);
 	&.open{
 		@include transform (100%);
 		background: rgb(5,5,5);
 		background: rgba(0,0,0,.8);
+	}
+	&.remove{
+		min-height: 0 !important;
 	}
 	&.open-modernizer{
 		left: 0;
@@ -106,6 +109,7 @@ a.button{
 		background: rgb(255,255,255);
 		padding: 10px 20px;
 		clear: both;
+		-webkit-transform: translatez(0);
 	}
 	ul{
 		width: 100%;
