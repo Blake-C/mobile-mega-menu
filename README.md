@@ -8,7 +8,6 @@ Must use preview link in Chrome, otherwise download and preview index.html.
 
 http://htmlpreview.github.io/?https://github.com/Blake-C/Mobile-Mega-Menu/blob/master/index.html
 
-
 ##Usage
 Add Mobile Mega Menu CSS
 ```html
@@ -33,9 +32,9 @@ Load Mobile Mega Menu JS
 Initiate Plugin
 ```javascript
 $( '.mobile-mega-menu' ).mobileMegaMenu({
-	changeToggleText: true,
-	enableWidgetRegion: true,
-	prependCloseButton: true,
+	changeToggleText: false,
+	enableWidgetRegion: false,
+	prependCloseButton: false,
 	stayOnActive: true,
 	toogleTextOnClose: 'Close Menu'
 });
@@ -51,11 +50,11 @@ $( '.mobile-mega-menu' ).mobileMegaMenu({
 **enableWidgetRegion** - default - false
 - Specify a div element with class of widget-region then place other items within that region to then have it appear below the first unordered list item. This can be search fields, social media links, or any valid HTML.
 
-**stayOnActive** - default - true
-- When set to true, the menu level where you select a page will be present the first time you open the menu after the page loads again.
-
 **prependCloseButton** - default - false
 - If the menu will be covering the entire screen you can add a close button at the top of the menu stack.
+
+**stayOnActive** - default - true
+- When set to true, the menu level where you select a page will be present the first time you open the menu after the page loads again.
 
 ##Contact
    * Twitter: [https://twitter.com/BlakeCerecero][1]

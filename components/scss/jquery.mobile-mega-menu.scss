@@ -100,16 +100,16 @@ a.button{
 	&.open-modernizer{
 		left: 0;
 	}
-	nav{
-		/* Fixes Issue on IE6 that creates gaps between UL tags
-		   Goes along with the top:0 on the ul below. */
-		position: relative;
-	}
 	.widget-region{
 		background: rgb(255,255,255);
 		padding: 10px 20px;
 		clear: both;
 		-webkit-transform: translatez(0);
+	}	
+	nav{
+		/* Fixes Issue on IE6 that creates gaps between UL tags
+		   Goes along with the top:0 on the ul below. */
+		position: relative;
 	}
 	ul{
 		width: 100%;

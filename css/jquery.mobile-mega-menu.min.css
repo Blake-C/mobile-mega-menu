@@ -76,15 +76,15 @@ a.button {
     min-height: 0 !important; }
   .mobile-mega-menu.open-modernizer {
     left: 0; }
-  .mobile-mega-menu nav {
-    /* Fixes Issue on IE6 that creates gaps between UL tags
-       Goes along with the top:0 on the ul below. */
-    position: relative; }
   .mobile-mega-menu .widget-region {
     background: white;
     padding: 10px 20px;
     clear: both;
     -webkit-transform: translatez(0); }
+  .mobile-mega-menu nav {
+    /* Fixes Issue on IE6 that creates gaps between UL tags
+       Goes along with the top:0 on the ul below. */
+    position: relative; }
   .mobile-mega-menu ul {
     width: 100%;
     margin: 0;
