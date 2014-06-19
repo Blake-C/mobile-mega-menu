@@ -89,13 +89,13 @@ http://DigitalBlake.com
 					}
 					
 					/* Change text when the menu is open to show the option to close the menu */
-					$(this).toggleClass('extended');
+					// $(this).toggleClass('extended');
 					
 					if (settings.changeToggleText){
-						if ( $(this).hasClass('extended') ){
-							$(this).html(settings.toogleTextOnClose);
-						} else if ( !$(this).hasClass('extended') ) {
-							$(this).html(currentText);
+						if ( !$(menuClass).hasClass('open') ){
+							$('a.toggle-menu').html(settings.toogleTextOnClose);
+						} else if ( $(menuClass).hasClass('open') ) {
+							$('a.toggle-menu').html(currentText);
 						}
 					}
 
