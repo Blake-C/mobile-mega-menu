@@ -30,20 +30,26 @@ http://DigitalBlake.com
 				/* Variables */
 				var animationSpeed 	= 250, // Change SCSS to match this speed
 					currentText 	= $('a.toggle-menu').html(), // Existing text of menu toggle
-					arrowButton 	= '<a class="toggle" href="#"><div class="arrow">Next</div></a>',
+					nextButton 		= '<a class="next-button" href="#"><div class="arrow">Next</div></a>',
 					backButton 		= '<li><a class="back-button" href="#">Back</a></li>',
-					closeButton 	= '<li><a class="close-button toggle-menu" href="#">Close Menu</a></li>';
+					closeButton 	= '<li><a class="close-button toggle-menu" href="#">Close Menu</a></li>',
+					maxHeight 		= -1;
 
-				var $menuRoot 		= $('.mobile-mega-menu'); // root search of DOM
+				var $menuRoot 		= $('.mobile-mega-menu'); // Root of Mobile Mega Menu
 
-				/* ------------------------- Add toggle button to main menu items with sub menus and add back button to top of every sub ul after the root */
-				$menuRoot.find('ul ul').before(arrowButton).siblings('a:first-of-type').addClass('has-toggle');
+				/* ------------------------- Add next button to main menu items with sub menus and add back button to top of every sub ul after the root */
+				$menuRoot.find('ul ul').before(nextButton).siblings('a:first-of-type').addClass('has-next-button');
 				$menuRoot.find('ul ul').prepend(backButton);
 
 				/* ------------------------- Prepend Close Button  */
 				if (settings.prependCloseButton){
 					$menuRoot.find('ul').closest('ul').prepend(closeButton);
 				}
+
+				/* Variables */
+				var $toggleMenu 	= $('a.toggle-menu'), // DOM Search for Menu Toggle
+					$nextAction 	= $menuRoot.find('a.next-button'), // DOM Search for Next Button
+					$backAction 	= $menuRoot.find('a.back-button'); // DOM Search for Back Button
 
 				// Stop scroll to top Animation on touch/tap/click
 				$('html, body').on('touchstart click', function(){
@@ -57,13 +63,10 @@ http://DigitalBlake.com
 				}
 
 				/* ------------------------- Set a variable to calculate height of the tallest ul in the menu, then set that height as the min-height of the menu container */
-				var maxHeight = -1;
-
 				$menuRoot.find('ul').each(function(){
 					maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
 				});
 
-					/* Added 50px to min height to solve issue with last menu item being hidden on desktop */
 				$menuRoot.css('min-height', maxHeight + 50).addClass('remove');
 
 				/* ------------------------- Set active menu item as is-in-view */
@@ -80,9 +83,9 @@ http://DigitalBlake.com
 					$menuRoot.find('a.active').closest('ul').parents().siblings('li').find('ul').hide();
 				}
 
-				/* ------------------------- Toggle Menu ------------------------- */
-				var $toggleMenu = $('a.toggle-menu');
 
+
+				/* ------------------------- Toggle Menu ------------------------- */
 				$toggleMenu.click(function(event){
 					event.preventDefault();
 
@@ -106,10 +109,9 @@ http://DigitalBlake.com
 				});/* End a.toggle-menu */
 
 
-				/* ------------------------- Toggle Sub Menus ------------------------- */
-				var $toggleButton = $menuRoot.find('a.toggle');
 
-				$toggleButton.click(function(event){
+				/* ------------------------- Next Menu Level, Button ------------------------- */
+				$nextAction.click(function(event){
 					event.preventDefault();
 
 					setTimeout(function() {
@@ -127,10 +129,9 @@ http://DigitalBlake.com
 				});
 
 
-				/* ------------------------- Back Button for Sub Menus ------------------------- */
-				var $backButton = $menuRoot.find('a.back-button');
 
-				$backButton.click(function(event){
+				/* ------------------------- Back a Menu Level, Button ------------------------- */
+				$backAction.click(function(event){
 					event.preventDefault();
 					
 					/* As we traverse back up the menu we reset the previous menu item from has-been-viewed to the is-in-view class. 
@@ -139,6 +140,7 @@ http://DigitalBlake.com
 						$menuRoot.find('ul.is-in-view ul.is-in-view').toggleClass('is-in-view');
 					});
 				});
+
 
 
 				/* ------------------------- Modernizer: For when css animations are not supported ------------------------- */
@@ -152,7 +154,7 @@ http://DigitalBlake.com
 					});
 
 					/* Next */
-					$toggleButton.click(function(event){
+					$nextAction.click(function(event){
 						event.preventDefault();
 
 						$menuRoot.find('ul').animate({
@@ -161,7 +163,7 @@ http://DigitalBlake.com
 					});
 
 					/* Back */
-					$backButton.click(function(event){
+					$backAction.click(function(event){
 						event.preventDefault();
 
 						$menuRoot.find('ul').animate({
@@ -170,6 +172,8 @@ http://DigitalBlake.com
 					});
 
 				} /* End Modernizer */
+
+
 
 			}); // End this.each / End Plugin
 

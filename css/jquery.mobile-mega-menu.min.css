@@ -126,9 +126,9 @@ a.button {
       text-shadow: 1px 1px 1px white;
       border-bottom: 1px solid #bbbdd3;
       -webkit-tap-highlight-color: transparent; }
-      .mobile-mega-menu ul li a.has-toggle {
+      .mobile-mega-menu ul li a.has-next-button {
         width: 75%; }
-      .mobile-mega-menu ul li a.toggle {
+      .mobile-mega-menu ul li a.next-button {
         width: 15%;
         text-align: center;
         color: white;
@@ -136,7 +136,7 @@ a.button {
         text-indent: 0px;
         background: url(../images/arrow-2-forward.png) 50% 50% no-repeat #4e97b3;
         background-size: 50px 50px; }
-        .mobile-mega-menu ul li a.toggle .arrow {
+        .mobile-mega-menu ul li a.next-button .arrow {
           visibility: hidden; }
       .mobile-mega-menu ul li a.back-button {
         text-indent: 50px;
