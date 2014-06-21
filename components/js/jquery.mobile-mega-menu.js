@@ -28,42 +28,43 @@ http://DigitalBlake.com
 			return this.each(function() {
 				/* ------------------------- Plugin Starts Here ------------------------- */
 				/* Variables */
-				var animationSpeed 	= 250,  // Change SCSS to match this speed
+				var animationSpeed 	= 250, // Change SCSS to match this speed
 					currentText 	= $('a.toggle-menu').html(), // Existing text of menu toggle
-					menuClass 		= '.mobile-mega-menu', // Base Class
 					arrowButton 	= '<a class="toggle" href="#"><div class="arrow">Next</div></a>',
 					backButton 		= '<li><a class="back-button" href="#">Back</a></li>',
 					closeButton 	= '<li><a class="close-button toggle-menu" href="#">Close Menu</a></li>';
 
+				var $menuRoot 		= $('.mobile-mega-menu'); // root search of DOM
+
 				/* ------------------------- Add toggle button to main menu items with sub menus and add back button to top of every sub ul after the root */
-				$(menuClass + ' ul ul').before(arrowButton).siblings('a:first-of-type').addClass('has-toggle');
-				$(menuClass + ' ul ul').prepend(backButton);
+				$menuRoot.find('ul ul').before(arrowButton).siblings('a:first-of-type').addClass('has-toggle');
+				$menuRoot.find('ul ul').prepend(backButton);
 
 				/* ------------------------- Prepend Close Button  */
 				if (settings.prependCloseButton){
-					$(menuClass + ' ul').closest('ul').prepend(closeButton);
+					$menuRoot.find('ul').closest('ul').prepend(closeButton);
 				}
 
 				// Stop scroll to top Animation on touch/tap/click
 				$('html, body').on('touchstart click', function(){
-					$("html, body").stop();
+					$('html, body').stop();
 				});
 
 				/* ------------------------- Generate and move Widget Region */
 				if(settings.enableWidgetRegion){	
-					var element = $(menuClass + ' .widget-region').detach();
-					$(menuClass + ' ul:first-child').append(element);
+					var widgets = $menuRoot.find('.widget-region').detach();
+					$menuRoot.find('ul:first').append(widgets);
 				}
 
 				/* ------------------------- Set a variable to calculate height of the tallest ul in the menu, then set that height as the min-height of the menu container */
 				var maxHeight = -1;
 
-				$(menuClass + ' ul').each(function(){
+				$menuRoot.find('ul').each(function(){
 					maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
 				});
 
 					/* Added 50px to min height to solve issue with last menu item being hidden on desktop */
-				$(menuClass).css('min-height', maxHeight + 50).addClass('remove');
+				$menuRoot.css('min-height', maxHeight + 50).addClass('remove');
 
 				/* ------------------------- Set active menu item as is-in-view */
 				if (settings.stayOnActive){
@@ -71,42 +72,44 @@ http://DigitalBlake.com
 						url = str.replace('#', '');
 					
 					// Will also work for relative and absolute hrefs
-					$(menuClass + ' ul li a').filter(function() {
+					$menuRoot.find('ul li a').filter(function() {
 						return this.href === url;
 					}).addClass('active');
 
-					$(menuClass + ' a.active').closest('ul').addClass('is-in-view').parents('ul').addClass('has-been-viewed');
-					$(menuClass + ' a.active').closest('ul').parents().siblings('li').find('ul').hide();
+					$menuRoot.find('a.active').closest('ul').addClass('is-in-view').parents('ul').addClass('has-been-viewed');
+					$menuRoot.find('a.active').closest('ul').parents().siblings('li').find('ul').hide();
 				}
 
 				/* ------------------------- Toggle Menu ------------------------- */
-				$('a.toggle-menu').click(function(event){
+				var $toggleMenu = $('a.toggle-menu');
+
+				$toggleMenu.click(function(event){
 					event.preventDefault();
 
 					/* When the menu is first opened give the first ul its is-in-view class */
-					if (!$(menuClass + ' ul:first-child').hasClass('has-been-viewed')){
-						$(menuClass + ' ul:first-child').toggleClass('is-in-view');
+					if ( !$menuRoot.find('ul:first-child').hasClass('has-been-viewed') ){
+						$menuRoot.find('ul:first-child').toggleClass('is-in-view');
 					}
 					
 					/* Change text when the menu is open to show the option to close the menu */
-					// $(this).toggleClass('extended');
-					
 					if (settings.changeToggleText){
-						if ( !$(menuClass).hasClass('open') ){
+						if ( !$menuRoot.hasClass('open') ){
 							$('a.toggle-menu').html(settings.toogleTextOnClose);
-						} else if ( $(menuClass).hasClass('open') ) {
+						} else if ( $menuRoot.hasClass('open') ) {
 							$('a.toggle-menu').html(currentText);
 						}
 					}
 
 					/* Open menu by adding open class and removing hidden, reverse on close */
-					$(menuClass).toggleClass('open').delay(animationSpeed).toggleClass('remove');
+					$menuRoot.toggleClass('open').delay(animationSpeed).toggleClass('remove');
 
 				});/* End a.toggle-menu */
 
 
 				/* ------------------------- Toggle Sub Menus ------------------------- */
-				$('a.toggle').click(function(event){
+				var $toggleButton = $menuRoot.find('a.toggle');
+
+				$toggleButton.click(function(event){
 					event.preventDefault();
 
 					setTimeout(function() {
@@ -125,13 +128,15 @@ http://DigitalBlake.com
 
 
 				/* ------------------------- Back Button for Sub Menus ------------------------- */
-				$('a.back-button').click(function(event){
+				var $backButton = $menuRoot.find('a.back-button');
+
+				$backButton.click(function(event){
 					event.preventDefault();
 					
 					/* As we traverse back up the menu we reset the previous menu item from has-been-viewed to the is-in-view class. 
 					Bringing back the slide in and slide off aniamtions. Once the animation is complete we go back down the DOM and remove the previous is-in-view ul class */
 					$(this).parents('ul.is-in-view').closest('ul.has-been-viewed').toggleClass('has-been-viewed is-in-view').promise().done(function(){
-						$('ul.is-in-view ul.is-in-view').toggleClass('is-in-view');
+						$menuRoot.find('ul.is-in-view ul.is-in-view').toggleClass('is-in-view');
 					});
 				});
 
@@ -140,26 +145,26 @@ http://DigitalBlake.com
 				if (!$('html').hasClass('csstransitions')) {
 
 					/* Toggle Menu */
-					$('a.toggle-menu').click(function(event){
+					$toggleMenu.click(function(event){
 						event.preventDefault();
 
-						$(menuClass).toggleClass('open-modernizer', animationSpeed);
+						$menuRoot.toggleClass('open-modernizer', animationSpeed);
 					});
 
 					/* Next */
-					$('a.toggle').click(function(event){
+					$toggleButton.click(function(event){
 						event.preventDefault();
 
-						$(menuClass + ' ul').animate({
+						$menuRoot.find('ul').animate({
 							right: '+=100%'
 						}, animationSpeed);
 					});
 
 					/* Back */
-					$('a.back-button').click(function(event){
+					$backButton.click(function(event){
 						event.preventDefault();
 
-						$(menuClass + ' ul').animate({
+						$menuRoot.find('ul').animate({
 							right: '-=100%'
 						}, animationSpeed);
 					});
