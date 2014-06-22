@@ -83,9 +83,9 @@ http://DigitalBlake.com
 					$menuRoot.find('a.active').closest('ul').parents().siblings('li').find('ul').hide();
 				}
 
+/* ------------------------- Actions ------------------------- */
 
-
-				/* ------------------------- Toggle Menu ------------------------- */
+				/* ------------------------- Open Menu ------------------------- */
 				$toggleMenu.click(function(event){
 					event.preventDefault();
 
@@ -110,7 +110,7 @@ http://DigitalBlake.com
 
 
 
-				/* ------------------------- Next Menu Level, Button ------------------------- */
+				/* ------------------------- Next Button ------------------------- */
 				$nextAction.click(function(event){
 					event.preventDefault();
 
@@ -130,7 +130,7 @@ http://DigitalBlake.com
 
 
 
-				/* ------------------------- Back a Menu Level, Button ------------------------- */
+				/* ------------------------- Back Button ------------------------- */
 				$backAction.click(function(event){
 					event.preventDefault();
 					
