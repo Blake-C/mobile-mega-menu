@@ -29,6 +29,4 @@ Temporary Items
 
 # Created by http://www.gitignore.io
 
-### CodeKit ###
-*/codekit-config.json
 .sass-cache
