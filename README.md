@@ -9,7 +9,7 @@ Must use preview link in Chrome, otherwise download and preview index.html. Inst
 http://htmlpreview.github.io/?https://github.com/Blake-C/Mobile-Mega-Menu/blob/master/index.html
 
 ##Installation
-Install components with [Bower](http://bower.io/): 'bower install'
+Install components with [Bower](http://bower.io/): `bower install`
 
 ##Usage
 Add Mobile Mega Menu CSS
