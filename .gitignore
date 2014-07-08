@@ -26,3 +26,9 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Created by http://www.gitignore.io
+
+### CodeKit ###
+*/codekit-config.json
+.sass-cache
