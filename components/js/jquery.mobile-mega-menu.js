@@ -29,13 +29,13 @@ http://DigitalBlake.com
 				/* ------------------------- Plugin Starts Here ------------------------- */
 				/* Variables */
 				var animationSpeed 	= 250, // Change SCSS to match this speed
-					currentText 	= $('a.toggle-menu').html(), // Existing text of menu toggle
 					nextButton 		= '<a class="next-button" href="#"><div class="arrow">Next</div></a>',
 					backButton 		= '<li><a class="back-button" href="#">Back</a></li>',
 					closeButton 	= '<li><a class="close-button toggle-menu" href="#">Close Menu</a></li>',
 					maxHeight 		= -1;
 
-				var $menuRoot 		= $('.mobile-mega-menu'); // Root of Mobile Mega Menu
+				var $menuRoot 		= $('.mobile-mega-menu'), // Root of Mobile Mega Menu
+					$currentText 	= $('a.toggle-menu').html(); // Existing text of menu toggle
 
 				/* ------------------------- Add next button to main menu items with sub menus and add back button to top of every sub ul after the root */
 				$menuRoot.find('ul ul').before(nextButton).siblings('a:first-of-type').addClass('has-next-button');
@@ -99,7 +99,7 @@ http://DigitalBlake.com
 						if ( !$menuRoot.hasClass('open') ){
 							$('a.toggle-menu').html(settings.toogleTextOnClose);
 						} else if ( $menuRoot.hasClass('open') ) {
-							$('a.toggle-menu').html(currentText);
+							$('a.toggle-menu').html($currentText);
 						}
 					}
 
