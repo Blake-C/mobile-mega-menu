@@ -211,8 +211,7 @@ module.exports = function (grunt) {
         },
 
         // The following *-min tasks produce minified files in the dist folder
-		imagemin: {										// Task
-			options: { cache: false },
+		imagemin: {
 			dist: {										// Another target
 				files: [{
 					expand: true,						// Enable dynamic expansion
@@ -365,8 +364,7 @@ module.exports = function (grunt) {
         'copy:dist',
         'rev',
         'usemin',
-        'htmlmin',
-        'imagemin'
+        'htmlmin'
     ]);
 
     grunt.registerTask('default', [
