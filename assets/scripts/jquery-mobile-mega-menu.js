@@ -6,6 +6,8 @@ http://DigitalBlake.com
 @blakecerecero
 
 */
+'use strict';
+
 (function($){
 	jQuery.fn.extend({
 
