@@ -5,8 +5,11 @@ The mobile mega menu is designed to allow for deep menu structures to be navigat
 
 ##Installation
 Install Bower Components with [Bower](http://bower.io/): ```bower install```
+
 Install NPM Components with [NPM](https://www.npmjs.org/): ```npm install```
+
 Run Development Server for Sass editing: ```grunt serve```
+
 Build files with: ```grunt build```
 
 ##Usage
