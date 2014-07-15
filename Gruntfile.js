@@ -129,6 +129,9 @@ module.exports = function (grunt) {
             options: {
                 loadPath: [
                     'bower_components'
+                ],
+                style: [
+                    'nested'
                 ]
             },
             dist: {
