@@ -30,3 +30,5 @@ Temporary Items
 # Created by http://www.gitignore.io
 
 .sass-cache
+.tmp
+node_modules
