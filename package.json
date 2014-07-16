@@ -1,6 +1,7 @@
 {
   "name": "mobile-mega-menu",
   "version": "0.0.0",
+  "repository": "https://github.com/Blake-C/Mobile-Mega-Menu",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
