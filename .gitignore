@@ -32,3 +32,4 @@ Temporary Items
 .sass-cache
 .tmp
 node_modules
+build
