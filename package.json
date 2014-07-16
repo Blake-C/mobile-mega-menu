@@ -1,7 +1,23 @@
 {
   "name": "mobile-mega-menu",
   "version": "0.0.0",
-  "repository": "https://github.com/Blake-C/Mobile-Mega-Menu",
+  "description": "The mobile mega menu is designed to allow for deep menu structures to be navigated easily on mobile devices.",
+  "repository": {
+    "type" : "git", 
+    "url" : "https://github.com/Blake-C/Mobile-Mega-Menu" 
+  },
+  "author": "Blake Cerecero",
+  "keywords": [
+    "mobile",
+    "menu",
+    "mobile-mega-menu"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
