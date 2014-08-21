@@ -146,13 +146,22 @@ http://DigitalBlake.com
 
 
 				/* ------------------------- Modernizer: For when css animations are not supported ------------------------- */
-				if (!$('html').hasClass('csstransitions')) {
+				if ( $('html').hasClass('no-csstransforms') || $('html').hasClass('no-cssanimations') ) {
 
 					/* Toggle Menu */
 					$toggleMenu.click(function(event){
 						event.preventDefault();
 
-						$menuRoot.toggleClass('open-modernizer', animationSpeed);
+						if ( $menuRoot.hasClass('open') ) {
+							$menuRoot.animate({
+								left: 0
+							});
+						} else {
+							$menuRoot.animate({
+								left: '-100%'
+							});
+						}
+
 					});
 
 					/* Next */

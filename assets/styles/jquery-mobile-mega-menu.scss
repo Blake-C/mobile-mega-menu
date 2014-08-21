@@ -1,4 +1,4 @@
-/* 
+/*! 
 
 Blake Cerecero
 Blake@DigitalBlake.com
@@ -7,28 +7,26 @@ http://DigitalBlake.com
 
 */
 
+// Import Variables -------------------------------------->
+@import 'jquery-mobile-mega-menu-variables';
+
 // Mixins -------------------------------------->
 @mixin transition ($type: all, $time: 300ms, $ease: linear) {
-    -webkit-transition	: $type $time $ease;
-    -moz-transition		: $type $time $ease;
-    -ms-transition		: $type $time $ease;
-    -o-transition		: $type $time $ease;
-    transition			: $type $time $ease;
+	@each $prefix in -webkit-, -moz-, -ms-, -o-, ''{
+		#{$prefix}transition: $type $time $ease;
+	}
+}
+
+@mixin transform ($value: 0px) {
+	@each $prefix in -webkit-, -moz-, -ms-, -o-, ''{
+		#{$prefix}transform: translateX($value);
+	}
 }
 
 
-@mixin transform ($x: 0px, $y: 0px, $z: 0px) {
-	-webkit-transform: 	translate3d($x, $y, $z);
-	-moz-transform: 	translate3d($x, $y, $z);
-	-ms-transform: 		translate3d($x, $y, $z);
-	-o-transform: 		translate3d($x, $y, $z);
-	transform: 			translate3d($x, $y, $z);
-}
-
-// Variables ------------------------------------>
-	$animation-speed: 250ms;
 
 // Base ----------------------------------------->
+
 * {
     border-box: box-sizing;
 }
@@ -85,23 +83,20 @@ a.button{
 	left: -100%;
 	position: absolute;
 	overflow: hidden;
-	background: rgb(5,5,5);
-	background: rgba(0,0,0,0);
+	background: $background-color-closed-fallback;
+	background: $background-color-closed;
 	-webkit-transform: translatez(0);
 	@include transition (all, $animation-speed, linear);
 	&.open{
 		@include transform (100%);
-		background: rgb(5,5,5);
-		background: rgba(0,0,0,.8);
+		background: $background-color-opened-fallback; // Fallback Open background color
+		background: $background-color-opened; // Opened background color
 	}
 	&.remove{
 		min-height: 0 !important;
 	}
-	&.open-modernizer{
-		left: 0;
-	}
 	.widget-region{
-		background: rgb(255,255,255);
+		background: $background-color-widget-region; // Widget Region Background color
 		padding: 10px 20px;
 		clear: both;
 		-webkit-transform: translatez(0);
@@ -140,13 +135,15 @@ a.button{
 				float: left;
 				
 				text-decoration: none;
-				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-				font-weight: 300;
-				font-size: 1.1em;
-				color: rgb(0,0,0);
-				background: rgb(234, 228, 255);
-				text-shadow: 1px 1px 1px rgb(255,255,255);
-				border-bottom: 1px solid rgb(187, 189, 211);
+				font-family: $font-family;
+				font-weight: $font-weight;
+				font-size: $font-size;
+
+				color: $text-color;
+				background: $background-color;
+				text-shadow: $text-shadow;
+				border-bottom: $border-bottom;
+				
 				-webkit-tap-highlight-color: rgba(0,0,0,0);
 				&.has-next-button{
 					width: 75%;
@@ -157,28 +154,23 @@ a.button{
 					color: rgb(255,255,255);
 					text-shadow: none;
 					text-indent: 0px;
-					background: url(../images/arrow-2-forward.png) 50% 50% no-repeat rgb(78, 151, 179);
-					background-size: 50px 50px;
+					background: $next-button-background;
 					& .arrow{
 						visibility: hidden;
 					}
 				}
 				&.back-button{
 					text-indent: 50px;
-					background: url(../images/arrow-2-back.png) 0 50% no-repeat rgb(78, 151, 179);
-					background-size: 50px 50px;
+					background: $back-button-background;
 					color: rgb(255,255,255);
 					text-shadow: none;
 				}
 				&.close-button{
-					background: rgb(70, 81, 160);
-					text-align: center;
+					background: $close-button-background; 
+					text-align: $close-button-text-align;
+					color: $close-button-color;
+					text-shadow: $close-button-text-shadow;
 					text-decoration: none;
-					color: rgb(255,255,255);
-					font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-					font-weight: 200;
-					font-size: 1.1em;
-					text-shadow: none;
 				}
 			} // end a
 			&:last-child > a{
@@ -188,5 +180,15 @@ a.button{
 				border-top: none;
 			}
 		}
+	}
+}
+
+/* PNG fallbacks for SVG Images */
+html.no-svg{
+	.mobile-mega-menu ul li a.back-button{
+		background: $back-button-background-fallback;
+	}
+	.mobile-mega-menu ul li a.next-button{
+		background: $next-button-background-fallback;
 	}
 }
