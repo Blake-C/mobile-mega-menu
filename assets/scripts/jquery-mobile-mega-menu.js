@@ -152,6 +152,8 @@ http://DigitalBlake.com
 					$toggleMenu.click(function(event){
 						event.preventDefault();
 
+						$menuRoot.css('transform', 'none');
+
 						if ( $menuRoot.hasClass('open') ) {
 							$menuRoot.animate({
 								left: 0
@@ -168,6 +170,8 @@ http://DigitalBlake.com
 					$nextAction.click(function(event){
 						event.preventDefault();
 
+						$menuRoot.find('.has-been-viewed').css('transform', 'none');
+
 						$menuRoot.find('ul').animate({
 							right: '+=100%'
 						}, animationSpeed);
@@ -176,6 +180,8 @@ http://DigitalBlake.com
 					/* Back */
 					$backAction.click(function(event){
 						event.preventDefault();
+
+						$menuRoot.find('.has-been-viewed').css('transform', 'none');
 
 						$menuRoot.find('ul').animate({
 							right: '-=100%'
