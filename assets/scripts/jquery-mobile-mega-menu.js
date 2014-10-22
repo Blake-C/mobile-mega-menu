@@ -77,11 +77,15 @@ http://DigitalBlake.com
 				if (settings.stayOnActive){
 					var str = window.location.href,
 						url = str.replace('#', '');
-					
+
 					// Will also work for relative and absolute hrefs
 					$menuRoot.find('ul li a').filter(function() {
 						return this.href === url;
-					}).addClass('active');
+					}).addClass('active').css('font-weight', 'bold');
+
+					if ( $menuRoot.find('a.active').siblings('ul').size() > 0 ) {
+						$menuRoot.find('a.active').removeClass('active').css('font-weight', 'bold').siblings('ul').find('li:first-child a:first-child').addClass('active');
+					}
 
 					$menuRoot.find('a.active').closest('ul').addClass('is-in-view').parents('ul').addClass('has-been-viewed');
 					$menuRoot.find('a.active').closest('ul').parents().siblings('li').find('ul').hide();
