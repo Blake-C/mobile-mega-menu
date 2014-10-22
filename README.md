@@ -40,7 +40,9 @@ $( '.mobile-mega-menu' ).mobileMegaMenu({
 	enableWidgetRegion: false,
 	prependCloseButton: false,
 	stayOnActive: true,
-	toogleTextOnClose: 'Close Menu'
+	toogleTextOnClose: 'Close Menu',
+	targetClass: 'mobile-mega-menu',
+	menuToggle: 'toggle-menu'
 });
 ```
 
@@ -59,6 +61,12 @@ $( '.mobile-mega-menu' ).mobileMegaMenu({
 
 **stayOnActive** - default - true
 - When set to true, the menu level where you select a page will be present the first time you open the menu after the page loads again.
+
+**targetClass** - default - mobile-mega-menu
+- Target the menu to be used with the plugin.
+
+**menuToggle** - default - toggle-menu
+- Create a class for the button that will toggle the specific menu.
 
 ##Contact
    * Twitter: [https://twitter.com/BlakeCerecero][1]

@@ -22,7 +22,9 @@ http://DigitalBlake.com
 				enableWidgetRegion: false,
 				prependCloseButton: false,
 				stayOnActive: true,
-				toogleTextOnClose: 'Close Menu'
+				toogleTextOnClose: 'Close Menu',
+				targetClass: 'mobile-mega-menu',
+				menuToggle: 'toggle-menu'
 			};
 
 			var settings = $.extend(defaults, options);
@@ -33,11 +35,11 @@ http://DigitalBlake.com
 				var animationSpeed 	= 250, // Change SCSS to match this speed
 					nextButton 		= '<a class="next-button" href="#"><div class="arrow">Next</div></a>',
 					backButton 		= '<li><a class="back-button" href="#">Back</a></li>',
-					closeButton 	= '<li><a class="close-button toggle-menu" href="#">Close Menu</a></li>',
+					closeButton 	= '<li><a class="close-button '+ settings.menuToggle +'" href="#">Close Menu</a></li>',
 					maxHeight 		= -1;
 
-				var $menuRoot 		= $('.mobile-mega-menu'), // Root of Mobile Mega Menu
-					$currentText 	= $('a.toggle-menu').html(); // Existing text of menu toggle
+				var $menuRoot 		= $('.' + settings.targetClass), // Root of Mobile Mega Menu
+					$currentText 	= $('a.' + settings.menuToggle).html(); // Existing text of menu toggle
 
 				/* ------------------------- Add next button to main menu items with sub menus and add back button to top of every sub ul after the root */
 				$menuRoot.find('ul ul').before(nextButton).siblings('a:first-of-type').addClass('has-next-button');
@@ -49,7 +51,7 @@ http://DigitalBlake.com
 				}
 
 				/* Variables */
-				var $toggleMenu 	= $('a.toggle-menu'), // DOM Search for Menu Toggle
+				var $toggleMenu 	= $('a.' + settings.menuToggle), // DOM Search for Menu Toggle
 					$nextAction 	= $menuRoot.find('a.next-button'), // DOM Search for Next Button
 					$backAction 	= $menuRoot.find('a.back-button'); // DOM Search for Back Button
 
@@ -99,9 +101,9 @@ http://DigitalBlake.com
 					/* Change text when the menu is open to show the option to close the menu */
 					if (settings.changeToggleText){
 						if ( !$menuRoot.hasClass('open') ){
-							$('a.toggle-menu').html(settings.toogleTextOnClose);
+							$('a.' + settings.menuToggle).html(settings.toogleTextOnClose);
 						} else if ( $menuRoot.hasClass('open') ) {
-							$('a.toggle-menu').html($currentText);
+							$('a.' + settings.menuToggle).html($currentText);
 						}
 					}
 

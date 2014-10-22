@@ -27,7 +27,8 @@
 		<div class="content-container">
 
 			<div class="inner-container">
-				<a href="#" class="toggle-menu button">Open Menu</a>
+				<a href="#" class="button main-menu-toggle">Open Menu</a>
+				<a href="#" class="button quick-links-toggle">Quick Links</a>
 
 				<div style="clear:both"></div>
 
@@ -52,7 +53,7 @@
 		</div><!-- End content-container -->
 
 
-		<div class="mobile-mega-menu">
+		<div class="main-menu mobile-mega-menu">
 			<nav>
 				<ul>
 					<li>
@@ -166,12 +167,25 @@
 				</ul>
 			</nav>
 
-
 			<div class="widget-region">
 				<p>This has been appended to the bottom of the first ul of the mobile mega menu.</p>
 				<input type="" value="Search">
 			</div>
 		</div><!-- End mobile-mega-menu -->
+
+
+		<!-- Quick Links -->
+		<div class="quick-links mobile-mega-menu">
+			<nav>
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Health &amp; Wellness</a></li>
+					<li><a href="#">Health &amp; Wellness</a></li>
+					<li><a href="#">Health &amp; Wellness</a></li>
+					<li><a href="#">Health &amp; Wellness</a></li>
+				</ul>
+			</nav>
+		</div>
 	</div>
 
     <!-- build:js scripts/vendor/jquery-min.js -->
@@ -183,12 +197,24 @@
     <!-- endbuild -->
 
 	<script>
-		$( '.mobile-mega-menu' ).mobileMegaMenu({
+		$( '.main-menu' ).mobileMegaMenu({
 			changeToggleText: true,
 			enableWidgetRegion: true,
 			prependCloseButton: true,
 			stayOnActive: true,
-			toogleTextOnClose: 'Close Menu'
+			toogleTextOnClose: 'Close Menu',
+			targetClass: 'main-menu',
+			menuToggle: 'main-menu-toggle'
+		});
+
+		$( '.quick-links' ).mobileMegaMenu({
+			changeToggleText: true,
+			enableWidgetRegion: true,
+			prependCloseButton: true,
+			stayOnActive: true,
+			toogleTextOnClose: 'Close Quick Links',
+			targetClass: 'quick-links',
+			menuToggle: 'quick-links-toggle'
 		});
 	</script>
 </body>
