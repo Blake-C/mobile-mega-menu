@@ -84,7 +84,7 @@ http://DigitalBlake.com
 					}).addClass('active').css('font-weight', 'bold');
 
 					if ( $menuRoot.find('a.active').siblings('ul').size() > 0 ) {
-						$menuRoot.find('a.active').removeClass('active').css('font-weight', 'bold').siblings('ul').find('li:first-child a:first-child').addClass('active');
+						$menuRoot.find('a.active').removeClass('active').css('font-weight', 'bold').siblings('ul').find('li:first-of-type').first().find('a').addClass('active');
 					}
 
 					$menuRoot.find('a.active').closest('ul').addClass('is-in-view').parents('ul').addClass('has-been-viewed');
