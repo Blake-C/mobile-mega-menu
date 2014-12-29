@@ -24,7 +24,6 @@ http://DigitalBlake.com
 				prependCloseButton: false,
 				stayOnActive: true,
 				toogleTextOnClose: 'Close Menu',
-				targetClass: 'mobile-mega-menu',
 				menuToggle: 'toggle-menu'
 			};
 
@@ -32,6 +31,7 @@ http://DigitalBlake.com
 
 			return this.each(function() {
 				/* ------------------------- Plugin Starts Here ------------------------- */
+				
 				/* Variables */
 				var animationSpeed 	= 250, // Change SCSS to match this speed
 					nextButton 		= '<a class="next-button" href="#"><div class="arrow">Next</div></a>',
@@ -39,7 +39,7 @@ http://DigitalBlake.com
 					closeButton 	= '<li><a class="close-button '+ settings.menuToggle +'" href="#">Close Menu</a></li>',
 					maxHeight 		= -1;
 
-				var $menuRoot 		= $('.' + settings.targetClass), // Root of Mobile Mega Menu
+				var $menuRoot 		= $(this), // Root of Mobile Mega Menu
 					$currentText 	= $('a.' + settings.menuToggle).html(); // Existing text of menu toggle
 
 				/* ------------------------- Add next button to main menu items with sub menus and add back button to top of every sub ul after the root */
