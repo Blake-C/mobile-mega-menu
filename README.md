@@ -11,21 +11,15 @@ Add Mobile Mega Menu CSS
 ```html
 <link rel="stylesheet" href="css/jquery.mobile-mega-menu.min.css">
 ```
+Additionally if you are using [Sass](http://sass-lang.com/), in the assets/styles directory of this plugin you will find the Sass files that you can include in your project rather than loading a separate CSS file.
 
-Load Modernizr
+Add Scripts to bottom of page
 ```html
-<script src="bower_components/modernizr/modernizr.js" type="text/javascript"></script>
+<script src="scripts/modernizr.js" type="text/javascript"></script>
+<script src="scripts/jquery.min.js" ></script>
+<script src="scripts/jquery.mobile-mega-menu.min.js" ></script>
 ```
-
-Load Jquery
-```html
-<script src="bower_components/jquery/dist/jquery.min.js" ></script>
-```
-
-Load Mobile Mega Menu JS
-```html
-<script src="js/jquery.mobile-mega-menu.min.js" ></script>
-```
+It is best practice to concatenate and minify javascript files. Consider using a tool like [Gulp](http://gulpjs.com/) or [Grunt](http://gruntjs.com/) as task managers to accomplish this. If you need IE8 and below support it is best to load Modernizr in the head of your document.
 
 Initiate Plugin
 ```javascript
