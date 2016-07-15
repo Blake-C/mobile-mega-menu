@@ -1,16 +1,10 @@
-Mobile-Mega-Menu
+Mobile Mega Menu
 ================
 
 The mobile mega menu is designed to allow for deep menu structures to be navigated easily on mobile devices. It has a left-right animation that makes it easy to understand where you are in the menu hierarchy.
 
 ##Installation
-Install Bower Components with [Bower](http://bower.io/): ``` bower install ```
-
-Install NPM Components with [NPM](https://www.npmjs.org/): ``` npm install ```
-
-Run Development Server for Sass editing with [Grunt](http://gruntjs.com/): ``` grunt serve ```
-
-Build files with [Grunt](http://gruntjs.com/): ``` grunt build ```
+Install with [Bower](http://bower.io/): ```bower install mobile-mega-menu --save```
 
 ##Usage
 Add Mobile Mega Menu CSS
