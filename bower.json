@@ -1,5 +1,5 @@
 {
-  "name": "Mobile-Mega-Menu",
+  "name": "mobile-mega-menu",
   "version": "2.1.1",
   "homepage": "https://github.com/Blake-C/Mobile-Mega-Menu",
   "authors": [
@@ -14,27 +14,22 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~1.11.1",
+    "jquery": "~1.11.3",
     "modernizr": "~2.8.3",
     "normalize.css": "~3.0.1"
   },
-  "description": "The mobile mega menu is designed to allow for deep menu structures to be navigated easily on mobile devices. It has a left-right animation that makes it easy to understand where you are in the menu hierarchy.",
+  "description": "Menu designed to allow for deep menu structures to be navigated easily on mobile devices.",
   "keywords": [
     "mobile",
-    "menu"
+    "mega",
+    "menu",
+    "responsive",
+    "mobile-mega-menu",
+    "mobilemegamenu",
+    "jquery"
   ],
   "main": [
-    "js/jquery.mobile-mega-menu.min.js",
-    "css/jquery.mobile-mega-menu.min.css",
-    "images/arrow-1-back.png",
-    "images/arrow-1-forward.png",
-    "images/arrow-2-back.png",
-    "images/arrow-2-forward.png",
-    "images/arrow-3-back.png",
-    "images/arrow-3-forward.png",
-    "images/arrow-4-back.png",
-    "images/arrow-4-forward.png",
-    "images/arrow-5-back.png",
-    "images/arrow-5-forward.png"
+    "assets/scripts/jquery-mobile-mega-menu.js",
+    "assets/styles/jquery-mobile-mega-menu.scss"
   ]
 }
