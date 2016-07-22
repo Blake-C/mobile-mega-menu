@@ -86,7 +86,7 @@ http://DigitalBlake.com
 						return this.href === url;
 					}).addClass('active').css('font-weight', 'bold');
 
-					if ( $menuRoot.find('a.active').siblings('ul').size() > 0 ) {
+					if ( $menuRoot.find('a.active').siblings('ul').length > 0 ) {
 						$menuRoot.find('a.active').removeClass('active').css('font-weight', 'bold').siblings('ul').find('li:first-of-type').first().find('a').addClass('active');
 					}
 
