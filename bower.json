@@ -13,9 +13,9 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~1.11.3",
+    "jquery": "~3.1.0",
     "modernizr": "~2.8.3",
-    "normalize.css": "~3.0.1"
+    "normalize.css": "~4.2.0"
   },
   "description": "Menu designed to allow for deep menu structures to be navigated easily on mobile devices.",
   "keywords": [
