@@ -68,8 +68,10 @@ http://DigitalBlake.com
 				}
 
 				/* ------------------------- Set a variable to calculate height of the tallest ul in the menu, then set that height as the min-height of the menu container */
-				$menuRoot.find('ul').each(function(){
-					maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+				var subLists = $menuRoot.find('ul');
+
+				subLists.toArray().forEach(function(element){
+					maxHeight = maxHeight > $(element).height() ? maxHeight : $(element).height();
 				});
 
 				$menuRoot.css('min-height', maxHeight + 50).addClass('remove');
