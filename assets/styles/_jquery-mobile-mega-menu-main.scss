@@ -1,0 +1,187 @@
+// Mixins -------------------------------------->
+@mixin transition ($type: all, $time: 300ms, $ease: linear) {
+	@each $prefix in -webkit-, -moz-, -ms-, -o-, ''{
+		#{$prefix}transition: $type $time $ease;
+	}
+}
+
+@mixin transform ($value: 0px) {
+	@each $prefix in -webkit-, -moz-, -ms-, -o-, ''{
+		#{$prefix}transform: translateX($value);
+	}
+}
+
+// Base ----------------------------------------->
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/* Allow the mobile menu background to extend to the bottom of the page */
+body, html, form#form1, div#PublicWrapper {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	display: initial;
+}
+html {
+	/* Prevent font scaling in landscape */
+    -webkit-text-size-adjust: 100%; 
+}
+
+.content-container{
+	margin: 0 20px 0px 20px;
+}
+.inner-container{
+	padding-top: 0px;
+	padding-bottom: 50px;
+}
+a.button{
+	float: left;
+	padding: 15px 2.5% 20px 2.5%;
+	background: rgb(70, 81, 160);
+	text-align: center;
+	text-decoration: none;
+	color: rgb(255,255,255);
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 200;
+	font-size: 1.1em;
+	width: 50%;
+}
+a.quick-links-toggle{
+	float: right;
+	border-left: 1px solid rgb(255,255,255);
+}
+
+/* ---------------------- Plugin starts here ---------------------- */
+.canvas-container{
+	min-height: 100%; /* Set min-height so that off-canvas-menu background pushes to bottom */
+	width: 100%; /* Full width so that content-container pulls to center */
+	position: relative; /* Position relative so that off-canvas-menu background pulls to the bottom */
+	-webkit-overflow-scrolling: touch; /* Prevent choppy scroll on mobile */
+}
+
+.mobile-mega-menu{
+	div, ul, li, a{
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		box-sizing: content-box;
+	}
+	width: 100%;
+	height: 100%;
+	// padding-top: 50px;
+	// margin-bottom: -50px;
+	top: 0;
+	bottom: 0;
+	left: -100%;
+	position: absolute;
+	overflow: hidden;
+	background: $background-color-closed-fallback;
+	background: $background-color-closed;
+	-webkit-transform: translatez(0);
+	@include transition (all, $animation-speed, linear);
+	&.open{
+		@include transform (100%);
+		background: $background-color-opened-fallback; // Fallback Open background color
+		background: $background-color-opened; // Opened background color
+	}
+	&.remove{
+		min-height: 0 !important;
+	}
+	.widget-region{
+		background: $background-color-widget-region; // Widget Region Background color
+		padding: 10px 20px;
+		clear: both;
+		-webkit-transform: translatez(0);
+	}	
+	nav{
+		/* Fixes Issue on IE6 that creates gaps between UL tags
+		   Goes along with the top:0 on the ul below. */
+		position: relative;
+	}
+	ul{
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		top: 0;
+		right: 0;
+		position: absolute;
+		list-style-type: none;
+	    @include transition (all, $animation-speed, linear);
+		/* 
+		When there are no elements next to a tall ul then the page does not get
+		a repaint leaving an after shadow of the previous element on screen. Adding
+		translatez prevents this from happening.
+		*/
+	    -webkit-transform: translatez(0);
+	   	&.has-been-viewed{
+			@include transform (-100%);
+		}
+		li{
+			ul{
+				left: 100%;
+			}
+			a{
+				width: 95%;
+				margin: 0;
+				padding: 15px 2.5%;
+				float: left;
+				
+				text-decoration: none;
+				font-family: $font-family;
+				font-weight: $font-weight;
+				font-size: $font-size;
+
+				color: $text-color;
+				background: $background-color;
+				text-shadow: $text-shadow;
+				border-bottom: $border-bottom;
+				
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+				&.has-next-button{
+					width: 75%;
+				}
+				&.next-button{
+					width: 15%;
+					text-align: center;
+					color: rgb(255,255,255);
+					text-shadow: none;
+					text-indent: 0px;
+					background: $next-button-background;
+					& .arrow{
+						visibility: hidden;
+					}
+				}
+				&.back-button{
+					text-indent: 50px;
+					background: $back-button-background;
+					color: rgb(255,255,255);
+					text-shadow: none;
+				}
+				&.close-button{
+					background: $close-button-background; 
+					text-align: $close-button-text-align;
+					color: $close-button-color;
+					text-shadow: $close-button-text-shadow;
+					text-decoration: none;
+				}
+			} // end a
+			&:last-child > a{
+				border-bottom: none;
+			}
+			&:first-child > a{
+				border-top: none;
+			}
+		}
+	}
+}
+
+/* PNG fallbacks for SVG Images */
+html.no-svg{
+	.mobile-mega-menu ul li a.back-button{
+		background: $back-button-background-fallback;
+	}
+	.mobile-mega-menu ul li a.next-button{
+		background: $next-button-background-fallback;
+	}
+}
