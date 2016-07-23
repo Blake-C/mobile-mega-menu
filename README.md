@@ -19,7 +19,7 @@ Add Scripts to bottom of page
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery.mobile-mega-menu.min.js"></script>
 ```
-It is best practice to concatenate and minify javascript files. Consider using a tool like [Gulp](http://gulpjs.com/) or [Grunt](http://gruntjs.com/) as task managers to accomplish this. If you need IE8 and below support it is best to load Modernizr in the head of your document.
+It is best practice to concatenate and minify javascript files. Consider using a tool like [Gulp](http://gulpjs.com/) or [Grunt](http://gruntjs.com/) as task managers to accomplish this.
 
 ##Initiate Plugin
 ```javascript
