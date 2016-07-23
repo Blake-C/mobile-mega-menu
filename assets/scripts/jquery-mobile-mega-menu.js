@@ -74,7 +74,7 @@ http://DigitalBlake.com
 					maxHeight = maxHeight > $(element).height() ? maxHeight : $(element).height();
 				});
 
-				$menuRoot.css('min-height', maxHeight + 50).addClass('remove');
+				$menuRoot.css('min-height', maxHeight + 50);
 
 				/* ------------------------- Set active menu item as is-in-view */
 				if (settings.stayOnActive){
@@ -115,7 +115,7 @@ http://DigitalBlake.com
 					}
 
 					/* Open menu by adding open class and removing hidden, reverse on close */
-					$menuRoot.toggleClass('open').delay(animationSpeed).toggleClass('remove');
+					$menuRoot.toggleClass('open');
 
 				});/* End a.toggle-menu */
 
