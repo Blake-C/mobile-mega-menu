@@ -5,9 +5,9 @@
 	}
 }
 
-@mixin transform ($value: 0px) {
+@mixin transform ($x: 0px, $y: 0px, $z: 0px) {
 	@each $prefix in -webkit-, -moz-, -ms-, -o-, ''{
-		#{$prefix}transform: translateX($value);
+		#{$prefix}transform: translate3d($x, $y, $z);
 	}
 }
 
@@ -31,6 +31,7 @@ html {
 
 .content-container{
 	margin: 0 20px 0px 20px;
+	transform: translateZ(0);
 }
 .inner-container{
 	padding-top: 0px;
@@ -73,26 +74,25 @@ a.quick-links-toggle{
 	// margin-bottom: -50px;
 	top: 0;
 	bottom: 0;
-	left: -100%;
+	left: 0;
 	position: absolute;
 	overflow: hidden;
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
 	background: $background-color-closed-fallback;
 	background: $background-color-closed;
-	-webkit-transform: translatez(0);
+	@include transform (-100%, 0px, 0px);
 	@include transition (all, $animation-speed, linear);
 	&.open{
-		@include transform (100%);
+		@include transform (0px, 0px, 0px);
 		background: $background-color-opened-fallback; // Fallback Open background color
 		background: $background-color-opened; // Opened background color
-	}
-	&.remove{
-		min-height: 0 !important;
 	}
 	.widget-region{
 		background: $background-color-widget-region; // Widget Region Background color
 		padding: 10px 20px;
 		clear: both;
-		-webkit-transform: translatez(0);
+		-webkit-transform: translateZ(0);
 	}	
 	nav{
 		/* Fixes Issue on IE6 that creates gaps between UL tags
@@ -111,11 +111,11 @@ a.quick-links-toggle{
 		/* 
 		When there are no elements next to a tall ul then the page does not get
 		a repaint leaving an after shadow of the previous element on screen. Adding
-		translatez prevents this from happening.
+		translateZ prevents this from happening.
 		*/
-	    -webkit-transform: translatez(0);
+	    -webkit-transform: translateZ(0);
 	   	&.has-been-viewed{
-			@include transform (-100%);
+			@include transform (-100%, 0px, 0px);
 		}
 		li{
 			ul{

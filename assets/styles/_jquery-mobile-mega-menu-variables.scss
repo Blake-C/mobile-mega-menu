@@ -3,11 +3,11 @@ $animation-speed: 250ms;
 
 // Transition from, when opening
 $background-color-closed-fallback: rgb(5,5,5);
-$background-color-closed: rgba(0,0,0,0);
+$background-color-closed: rgba(0,0,0,.5);
 
 // Transition to, when opened
 $background-color-opened-fallback: rgb(5,5,5);
-$background-color-opened: rgba(0,0,0,.8);
+$background-color-opened: rgba(0,0,0,.5);
 
 // Widget Region background color
 $background-color-widget-region: rgb(255,255,255);
@@ -23,12 +23,12 @@ $font-weight: 300;
 $font-size: 1.1em;
 
 // Next Menu Button
-$next-button-background-fallback: url(../images/png/arrow-6-forward.png) 50% 50% no-repeat rgb(78, 151, 179);
-$next-button-background: url(../images/svg/arrow-6-forward.svg) 50% 50% no-repeat rgb(78, 151, 179);
+$next-button-background-fallback: url('../images/png/arrow-6-forward.png') 50% 50% no-repeat rgb(78, 151, 179);
+$next-button-background: url('../images/svg/arrow-6-forward.svg') 50% 50% no-repeat rgb(78, 151, 179);
 
 // Back Menu Button
-$back-button-background-fallback: url(../images/png/arrow-6-back.png) 0 50% no-repeat rgb(78, 151, 179);
-$back-button-background: url(../images/svg/arrow-6-back.svg) 10px 50% no-repeat rgb(78, 151, 179);
+$back-button-background-fallback: url('../images/png/arrow-6-back.png') 0 50% no-repeat rgb(78, 151, 179);
+$back-button-background: url('../images/svg/arrow-6-back.svg') 10px 50% no-repeat rgb(78, 151, 179);
 
 // Close Menu Button
 $close-button-background: rgb(70, 81, 160);;
