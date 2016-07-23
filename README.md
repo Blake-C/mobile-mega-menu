@@ -29,7 +29,6 @@ $( '.mobile-mega-menu' ).mobileMegaMenu({
 	prependCloseButton: false,
 	stayOnActive: true,
 	toogleTextOnClose: 'Close Menu',
-	targetClass: 'mobile-mega-menu',
 	menuToggle: 'toggle-menu'
 });
 ```
