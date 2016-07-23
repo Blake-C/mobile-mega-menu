@@ -56,11 +56,6 @@ http://DigitalBlake.com
 					$nextAction 	= $menuRoot.find('a.next-button'), // DOM Search for Next Button
 					$backAction 	= $menuRoot.find('a.back-button'); // DOM Search for Back Button
 
-				// Stop scroll to top Animation on touch/tap/click
-				$('html, body').on('touchstart click', function(){
-					$('html, body').stop();
-				});
-
 				/* ------------------------- Generate and move Widget Region */
 				if(settings.enableWidgetRegion){	
 					var widgets = $menuRoot.find('.widget-region').detach();
