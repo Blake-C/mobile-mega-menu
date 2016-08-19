@@ -23,7 +23,7 @@
     "jquery"
   ],
   "main": [
-    "dist/assets/scripts/main.js",
+    "dist/assets/scripts/bundle.main.js",
     "dist/assets/styles/styles.css"
   ]
 }
