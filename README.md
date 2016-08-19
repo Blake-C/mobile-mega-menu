@@ -9,15 +9,15 @@ Install with [Bower](http://bower.io/): ```bower install mobile-mega-menu --save
 ##Usage
 Add Mobile Mega Menu CSS
 ```html
-<link rel="stylesheet" href="css/jquery.mobile-mega-menu.min.css">
+<link rel="stylesheet" href="css/styles.css">
 ```
 Additionally if you are using [Sass](http://sass-lang.com/), in the assets/styles directory of this plugin you will find the Sass files that you can include in your project rather than loading a separate CSS file.
 
 Add Scripts to bottom of page
 ```html
-<script src="scripts/modernizr.js"></script>
+<script src="scripts/modernizr.min.js"></script>
 <script src="scripts/jquery.min.js"></script>
-<script src="scripts/jquery.mobile-mega-menu.min.js"></script>
+<script src="scripts/bundle.main.js"></script>
 ```
 It is best practice to concatenate and minify javascript files. Consider using a tool like [Gulp](http://gulpjs.com/) or [Grunt](http://gruntjs.com/) as task managers to accomplish this.
 
@@ -58,7 +58,7 @@ $( '.mobile-mega-menu' ).mobileMegaMenu({
 ##Contact
    * Twitter: [https://twitter.com/BlakeCerecero][1]
    * Portfolio: [http://digitalblake.com/][2]
-   
+
 [1]: https://twitter.com/BlakeCerecero "https://twitter.com/BlakeCerecero"
 [2]: http://digitalblake.com/ "http://digitalblake.com/"
 
