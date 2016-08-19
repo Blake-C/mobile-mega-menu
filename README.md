@@ -4,7 +4,10 @@ Mobile Mega Menu
 The mobile mega menu is designed to allow for deep menu structures to be navigated easily on mobile devices. It has a left-right animation that makes it easy to understand where you are in the menu hierarchy.
 
 ##Installation
-Install with [NPM](https://www.npmjs.com/) ```npm install mobile-mega-menu --save``` or
+Install with [NPM](https://www.npmjs.com/) ```npm install mobile-mega-menu --save```
+
+or
+
 Install with [Bower](http://bower.io/): ```bower install mobile-mega-menu --save```
 
 ##Important Note
