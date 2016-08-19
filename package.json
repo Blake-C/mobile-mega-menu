@@ -16,7 +16,7 @@
     "mobilemegamenu",
     "jquery"
   ],
-  "main": "dist/assets/scripts/main.js",
+  "main": "dist/assets/scripts/bundle.main.js",
   "license": "MIT",
   "homepage": "https://github.com/Blake-C/mobile-mega-menu",
   "repository": {
