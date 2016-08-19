@@ -28,6 +28,7 @@ Temporary Items
 ### Package Manager ###
 bower_components
 node_modules
+npm-debug.log
 
 
 ### Created by http://www.gitignore.io ###
