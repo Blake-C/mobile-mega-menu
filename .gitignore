@@ -1,34 +1,41 @@
-# Created by http://www.gitignore.io
-
-### Bower ###
-bower_components
-
-
 ### OSX ###
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
+
+### Icon must end with two \r ###
 Icon
 
 
-# Thumbnails
+### Thumbnails ###
 ._*
 
-# Files that might appear on external disk
+
+### Files that might appear on external disk ###
 .Spotlight-V100
 .Trashes
 
-# Directories potentially created on remote AFP share
+
+### Directories potentially created on remote AFP share ###
+.apdisk
 .AppleDB
 .AppleDesktop
 Network Trash Folder
 Temporary Items
-.apdisk
 
-# Created by http://www.gitignore.io
 
+### Package Manager ###
+bower_components
+node_modules
+
+
+### Created by http://www.gitignore.io ###
+*.css.map
+.phpintel
 .sass-cache
 .tmp
-node_modules
+.zip
+assets
+cache
+logs
