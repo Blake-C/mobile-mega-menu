@@ -7,6 +7,9 @@ The mobile mega menu is designed to allow for deep menu structures to be navigat
 Install with [NPM](https://www.npmjs.com/) ```npm install mobile-mega-menu --save``` or
 Install with [Bower](http://bower.io/): ```bower install mobile-mega-menu --save```
 
+##Important Note
+This module is meant to be used on projects where jQuery is attached to the window object. If you try to run this module using webpack or a module loader to import jQuery you will run into errors. Here is [webpacks documentation](https://webpack.github.io/docs/library-and-externals.html) to run jQuery as an external dependency.
+
 ##Usage
 Add Mobile Mega Menu CSS
 ```html
