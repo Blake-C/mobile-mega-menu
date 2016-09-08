@@ -19,6 +19,7 @@ const webpackConfig = validaate({
 	},
 	output: {
 		filename: 'bundle.[name].js',
+		library: 'MobileMegaMenu',
 		libraryTarget: 'umd',
 		umdNamedDefine: true
 	},
