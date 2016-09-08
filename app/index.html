@@ -180,33 +180,40 @@
 	</div>
 
 	<script src="assets/scripts/bundle.modernizr.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
     <script src="assets/scripts/bundle.main.js"></script>
 
 	<script>
-		(function($){
-			$(document).ready(function(){
+		(function(){
+			document.addEventListener('DOMContentLoaded', function(event) {
 
-				$( '.main-menu' ).mobileMegaMenu({
-					changeToggleText: true,
-					enableWidgetRegion: true,
-					prependCloseButton: true,
-					stayOnActive: true,
-					toogleTextOnClose: 'Close Menu',
-					menuToggle: 'main-menu-toggle'
-				});
+				var mainMenu = document.getElementsByClassName('main-menu');
+				var mainMenuMMM = new MobileMegaMenu(mainMenu);
+					mainMenuMMM.options = {
+						changeToggleText: true,
+						enableWidgetRegion: true,
+						prependCloseButton: true,
+						stayOnActive: true,
+						toogleTextOnClose: 'Close Menu',
+						menuToggle: 'main-menu-toggle'
+					}
 
-				$( '.quick-links' ).mobileMegaMenu({
-					changeToggleText: true,
-					enableWidgetRegion: true,
-					prependCloseButton: true,
-					stayOnActive: true,
-					toogleTextOnClose: 'Close Quick Links',
-					menuToggle: 'quick-links-toggle'
-				});
+				var quickLinks = document.getElementsByClassName('quick-links');
+				var quickLinksMMM = new MobileMegaMenu(quickLinks);
+					quickLinksMMM.options = {
+						changeToggleText: true,
+						enableWidgetRegion: true,
+						prependCloseButton: true,
+						stayOnActive: true,
+						toogleTextOnClose: 'Close Quick Links',
+						menuToggle: 'quick-links-toggle'
+					}
 
+				/* See menu */
+				console.log(mainMenuMMM);
+				console.log(quickLinksMMM);
 			});
-		})(jQuery);
+		})();
 
 	</script>
 </body>
