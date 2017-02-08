@@ -177,11 +177,27 @@ a.quick-links-toggle{
 }
 
 /* PNG fallbacks for SVG Images */
-html.no-svg{
-	.mobile-mega-menu ul li a.back-button{
-		background: $back-button-background-fallback;
+html {
+	&.no-cssanimations {
+		.mobile-mega-menu {
+			left: -100%;
+		}
 	}
-	.mobile-mega-menu ul li a.next-button{
-		background: $next-button-background-fallback;
+
+	&.no-svg{
+		.mobile-mega-menu {
+			ul {
+				li {
+					a {
+						&.back-button{
+							background: $back-button-background-fallback;
+						}
+						&.next-button{
+							background: $next-button-background-fallback;
+						}
+					}
+				}
+			}
+		}
 	}
 }
