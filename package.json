@@ -1,10 +1,10 @@
 {
   "name": "mobile-mega-menu",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "Menu designed to allow for deep menu structures to be navigated easily on mobile devices.",
   "repository": {
-    "type" : "git", 
-    "url" : "https://github.com/Blake-C/mobile-mega-menu" 
+    "type": "git",
+    "url": "https://github.com/Blake-C/mobile-mega-menu"
   },
   "author": "Blake Cerecero",
   "keywords": [
