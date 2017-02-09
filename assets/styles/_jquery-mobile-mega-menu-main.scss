@@ -17,61 +17,60 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
 /* Allow the mobile menu background to extend to the bottom of the page */
-body, html, form#form1, div#PublicWrapper {
+body, html {
 	margin: 0;
 	padding: 0;
-	height: 100%;
+	height: initial;
 	display: initial;
 }
+
 html {
 	/* Prevent font scaling in landscape */
-    -webkit-text-size-adjust: 100%; 
+	-webkit-text-size-adjust: 100%; 
 }
 
-.content-container{
+.content-container {
 	margin: 0 20px 0px 20px;
 	transform: translateZ(0);
 }
-.inner-container{
+
+.inner-container {
 	padding-top: 0px;
 	padding-bottom: 50px;
 }
-a.button{
-	float: left;
-	padding: 15px 2.5% 20px 2.5%;
+
+a.button {
 	background: rgb(70, 81, 160);
+	color: rgb(255,255,255);
+	float: left;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 1.1em;
+	font-weight: 200;
+	padding: 15px 2.5% 20px 2.5%;
 	text-align: center;
 	text-decoration: none;
-	color: rgb(255,255,255);
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-weight: 200;
-	font-size: 1.1em;
 	width: 50%;
 }
-a.quick-links-toggle{
-	float: right;
+a.quick-links-toggle {
 	border-left: 1px solid rgb(255,255,255);
+	float: right;
 }
 
 /* ---------------------- Plugin starts here ---------------------- */
-.canvas-container{
+.canvas-container {
 	min-height: 100%; /* Set min-height so that off-canvas-menu background pushes to bottom */
 	width: 100%; /* Full width so that content-container pulls to center */
-	position: relative; /* Position relative so that off-canvas-menu background pulls to the bottom */
 	-webkit-overflow-scrolling: touch; /* Prevent choppy scroll on mobile */
 }
 
-.mobile-mega-menu{
-	div, ul, li, a{
-		-webkit-box-sizing: content-box;
-		-moz-box-sizing: content-box;
-		box-sizing: content-box;
-	}
+.mobile-mega-menu {
+	@include transform (-100%, 0px, 0px);
+	@include transition (all, $animation-speed, linear);
+
 	width: 100%;
 	height: 100%;
-	// padding-top: 50px;
-	// margin-bottom: -50px;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -81,96 +80,120 @@ a.quick-links-toggle{
 	-webkit-perspective: 1000;
 	background: $background-color-closed-fallback;
 	background: $background-color-closed;
-	@include transform (-100%, 0px, 0px);
-	@include transition (all, $animation-speed, linear);
-	&.open{
+
+	div, 
+	ul, 
+	li, 
+	a{
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		box-sizing: content-box;
+	}
+
+	&.open {
 		@include transform (0px, 0px, 0px);
 		background: $background-color-opened-fallback; // Fallback Open background color
 		background: $background-color-opened; // Opened background color
 	}
-	.widget-region{
+
+	.widget-region {
 		background: $background-color-widget-region; // Widget Region Background color
 		padding: 10px 20px;
 		clear: both;
 		-webkit-transform: translateZ(0);
-	}	
-	nav{
+	}
+
+	nav {
 		/* Fixes Issue on IE6 that creates gaps between UL tags
 		   Goes along with the top:0 on the ul below. */
 		position: relative;
 	}
-	ul{
-		width: 100%;
+
+	ul {
+		@include transition (all, $animation-speed, linear);
+
+		list-style-type: none;
 		margin: 0;
 		padding: 0;
-		top: 0;
-		right: 0;
 		position: absolute;
-		list-style-type: none;
-	    @include transition (all, $animation-speed, linear);
+		right: 0;
+		top: 0;
+		width: 100%;
+		
 		/* 
 		When there are no elements next to a tall ul then the page does not get
 		a repaint leaving an after shadow of the previous element on screen. Adding
 		translateZ prevents this from happening.
 		*/
-	    -webkit-transform: translateZ(0);
-	   	&.has-been-viewed{
+		-webkit-transform: translateZ(0);
+
+		&.has-been-viewed {
 			@include transform (-100%, 0px, 0px);
 		}
-		li{
-			ul{
+
+		li {
+			ul {
 				left: 100%;
 			}
-			a{
-				width: 95%;
+
+			a {
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+				background: $background-color;
+				border-bottom: $border-bottom;				
+				color: $text-color;
+				float: left;
+				font-family: $font-family;
+				font-size: $font-size;
+				font-weight: $font-weight;
 				margin: 0;
 				padding: 15px 2.5%;
-				float: left;
-				
 				text-decoration: none;
-				font-family: $font-family;
-				font-weight: $font-weight;
-				font-size: $font-size;
-
-				color: $text-color;
-				background: $background-color;
 				text-shadow: $text-shadow;
-				border-bottom: $border-bottom;
-				
-				-webkit-tap-highlight-color: rgba(0,0,0,0);
-				&.has-next-button{
+				width: 95%;
+
+				&.has-next-button {
 					width: 75%;
 				}
-				&.next-button{
-					width: 15%;
-					text-align: center;
-					color: rgb(255,255,255);
-					text-shadow: none;
-					text-indent: 0px;
+
+				&.next-button {
 					background: $next-button-background;
-					& .arrow{
+					color: rgb(255,255,255);
+					text-align: center;
+					text-indent: 0px;
+					text-shadow: none;
+					width: 15%;
+
+					.arrow {
 						visibility: hidden;
 					}
 				}
-				&.back-button{
-					text-indent: 50px;
+
+				&.back-button {
 					background: $back-button-background;
 					color: rgb(255,255,255);
+					text-indent: 50px;
 					text-shadow: none;
 				}
-				&.close-button{
+
+				&.close-button {
 					background: $close-button-background; 
-					text-align: $close-button-text-align;
 					color: $close-button-color;
-					text-shadow: $close-button-text-shadow;
+					text-align: $close-button-text-align;
 					text-decoration: none;
+					text-shadow: $close-button-text-shadow;
 				}
 			} // end a
-			&:last-child > a{
-				border-bottom: none;
+
+			&:last-child {
+				> a {
+					border-bottom: none;
+				}
 			}
-			&:first-child > a{
-				border-top: none;
+
+			&:first-child {
+				> a {
+					border-top: none;
+				}
 			}
 		}
 	}
@@ -189,10 +212,10 @@ html {
 			ul {
 				li {
 					a {
-						&.back-button{
+						&.back-button {
 							background: $back-button-background-fallback;
 						}
-						&.next-button{
+						&.next-button {
 							background: $next-button-background-fallback;
 						}
 					}
