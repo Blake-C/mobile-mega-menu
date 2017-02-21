@@ -43,7 +43,8 @@ http://DigitalBlake.com
 					$currentText 	= $('a.' + settings.menuToggle).html(); // Existing text of menu toggle
 
 				/* ------------------------- Add next button to main menu items with sub menus and add back button to top of every sub ul after the root */
-				$menuRoot.find('ul ul').before(nextButton).siblings('a:first-of-type').addClass('has-next-button');
+				$menuRoot.find('ul a').addClass('menu-item');
+                $menuRoot.find('ul ul').before(nextButton).siblings('a:first-of-type').addClass('has-next-button');
 				$menuRoot.find('ul ul').prepend(backButton);
 
 				/* ------------------------- Prepend Close Button  */
@@ -73,12 +74,25 @@ http://DigitalBlake.com
 
 				/* ------------------------- Set active menu item as is-in-view */
 				if (settings.stayOnActive){
-					var str = window.location.href,
-						url = str.replace('#', '');
+					var str = window.location.href;
+					var url = str.replace('#', '');
+                    
+                    $menuRoot.find('ul li a')
 
 					// Will also work for relative and absolute hrefs
 					$menuRoot.find('ul li a').filter(function() {
-						return this.href === url;
+                        // if ( $(this).hasClass('menu-item') ) {
+                        //     var menuItem = String(this.href).split('/');
+                        //     var currentItem = menuItem.pop();
+                        //     
+                        //     var currentItemParent = $(this).parents('li').parents('li').children('a.menu-item')
+                        //     var currentItemParentURL = String(currentItemParent.href).split('/');
+                        // 
+                        //     console.log(currentItemParentURL);
+                        //     
+                        // }
+                    
+                        return this.href === url;
 					}).addClass('active').css('font-weight', 'bold');
 
 					if ( $menuRoot.find('a.active').siblings('ul').length > 0 ) {
