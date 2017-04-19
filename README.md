@@ -3,10 +3,10 @@ Mobile Mega Menu
 
 The mobile mega menu is designed to allow for deep menu structures to be navigated easily on mobile devices. It has a left-right animation that makes it easy to understand where you are in the menu hierarchy.
 
-##Installation
+## Installation
 Install with [Bower](http://bower.io/): ```bower install mobile-mega-menu --save```
 
-##Usage
+## Usage
 Add Mobile Mega Menu CSS
 ```html
 <link rel="stylesheet" href="css/jquery.mobile-mega-menu.min.css">
@@ -21,7 +21,7 @@ Add Scripts to bottom of page
 ```
 It is best practice to concatenate and minify javascript files. Consider using a tool like [Gulp](http://gulpjs.com/) or [Grunt](http://gruntjs.com/) as task managers to accomplish this.
 
-##Initiate Plugin
+## Initiate Plugin
 ```javascript
 $( '.mobile-mega-menu' ).mobileMegaMenu({
 	changeToggleText: false,
@@ -55,7 +55,7 @@ $( '.mobile-mega-menu' ).mobileMegaMenu({
 **menuToggle** - default - toggle-menu
 - Create a class for the button that will toggle the specific menu.
 
-##Contact
+## Contact
    * Twitter: [https://twitter.com/BlakeCerecero][1]
    * Portfolio: [http://digitalblake.com/][2]
    
