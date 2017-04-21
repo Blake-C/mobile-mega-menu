@@ -65,12 +65,27 @@ http://DigitalBlake.com
 
 				/* ------------------------- Set a variable to calculate height of the tallest ul in the menu, then set that height as the min-height of the menu container */
 				var subLists = $menuRoot.find('ul');
+				var resizeTimer;
 
-				subLists.toArray().forEach(function(element){
-					maxHeight = maxHeight > $(element).height() ? maxHeight : $(element).height();
+				// use setTimeout to prevent function call on every pixel resize
+				// for better performance
+				$(window).resize(function() {
+					clearTimeout(resizeTimer);
+
+					resizeTimer = setTimeout(function() {
+						min_el_height();
+					}, 500);
 				});
 
-				$menuRoot.css('min-height', maxHeight + 50);
+				function min_el_height() {
+					subLists.toArray().forEach(function(element){
+						maxHeight = maxHeight > $(element).height() ? maxHeight : $(element).height();
+					});
+
+					$menuRoot.css('min-height', maxHeight + 50);
+				};
+
+				min_el_height(); // call function once on initialization
 
 				/* ------------------------- Set active menu item as is-in-view */
 				if (settings.stayOnActive){
