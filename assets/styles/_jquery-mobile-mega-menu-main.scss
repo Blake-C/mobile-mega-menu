@@ -12,18 +12,19 @@
 }
 
 // Base ----------------------------------------->
-*, *:before, *:after {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+*, 
+*:before, 
+*:after {
 	box-sizing: border-box;
 }
 
 /* Allow the mobile menu background to extend to the bottom of the page */
-body, html {
+body, 
+html {
+	display: initial;
+	height: initial;
 	margin: 0;
 	padding: 0;
-	height: initial;
-	display: initial;
 }
 
 html {
@@ -32,30 +33,32 @@ html {
 }
 
 .content-container {
-	margin: 0 20px 0px 20px;
+	margin: 0 20px;
 	transform: translateZ(0);
 }
 
 .inner-container {
-	padding-top: 0px;
 	padding-bottom: 50px;
+	padding-top: 0px;
 }
 
-a.button {
-	background: rgb(70, 81, 160);
-	color: rgb(255,255,255);
-	float: left;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 1.1em;
-	font-weight: 200;
-	padding: 15px 2.5% 20px 2.5%;
-	text-align: center;
-	text-decoration: none;
-	width: 50%;
-}
-a.quick-links-toggle {
-	border-left: 1px solid rgb(255,255,255);
-	float: right;
+.button {
+	&.mmm {
+		background: rgb(70, 81, 160);
+		color: rgb(255, 255, 255);
+		float: left;
+		font-size: 1.1em;
+		font-weight: 200;
+		padding: 15px 2.5% 20px 2.5%;
+		text-align: center;
+		text-decoration: none;
+		width: 50%;
+		
+		&.quick-links-toggle {
+			border-left: 1px solid rgb(255,255,255);
+			float: right;
+		}
+	}
 }
 
 /* ---------------------- Plugin starts here ---------------------- */
