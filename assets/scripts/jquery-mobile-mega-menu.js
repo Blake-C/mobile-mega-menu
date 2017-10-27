@@ -88,30 +88,39 @@ http://DigitalBlake.com
 				min_el_height(); // call function once on initialization
 
 				/* ------------------------- Set active menu item as is-in-view */
+				function cleanURL(href) {
+					href = href.split('.').length >= 2 ? href.substring(0, href.lastIndexOf('/')) : href;
+					href = href.substr(-1) === '/' ? href : href + '/';
+					return href;
+				}
+
 				if (settings.stayOnActive){
-					var windowHref = window.location.href;
-					var pageUrl = windowHref.replace('#', '');
+					var pageUrl = cleanURL(window.location.href);
 
 					// Will also work for relative and absolute hrefs
-					$menuRoot.find('ul li a').filter(function() {
+					$menuRoot.find('ul li a').filter(function(index) {
 						// Grab anchors that are part of the original menu structure and not anything added by the plugin
 						if ( $(this).hasClass('menu-item') ) {
+
 							// Turn the href for the anchor into an array
-							var menuItem = String(this.href).split('/');
-							menuItem.pop(); // Remove last empty item in array
-							menuItem.pop(); // Remove last page item in array
+							var activeMenuItem = this.href.split('#').length >= 2 ? '' : cleanURL(this.href);
+							var activeMenuItemURL = String(activeMenuItem).split('/');
+							activeMenuItemURL.pop(); // Remove last empty item in array
+							activeMenuItemURL.pop(); // Remove last page item in array
 
 							// Find parent of anchor and turn it into an array
-							var currentItemParent = $(this).parents('li').parents('li').children('a.menu-item')
-							var currentItemParentURL = String($(currentItemParent).attr('href')).split('/');
-							currentItemParentURL.pop(); // Remove last empty item in array
+							var parent = $(this).parents('li').parents('li').children('a.menu-item');
+							parent = parent.length ? cleanURL(parent[0].href) : ''; // Use .href, same as this.href
+							var parentURL = String(parent).split('/');
+							parentURL.pop(); // Remove last empty item in array
 
-							if (currentItemParent.length) { // If the current page has a parent
-								if (JSON.stringify(menuItem) === JSON.stringify(currentItemParentURL)) { // JSON.stringify so we can compare our arrays
-									return this.href === pageUrl; // If the page URL and menu URL match return true
+							// If the current page has a parent menu item
+							if (parent) {
+								if (JSON.stringify(activeMenuItemURL) === JSON.stringify(parentURL)) { // JSON.stringify so we can compare our arrays
+									return activeMenuItem === pageUrl; // If the page URL and menu URL match return true
 								}
 							} else {
-								return this.href === pageUrl; // If the page URL and menu URL match return true
+								return activeMenuItem === pageUrl; // If the page URL and menu URL match return true
 							}
 						}
 					}).addClass('active').css('font-weight', 'bold');
