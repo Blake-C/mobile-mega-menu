@@ -98,7 +98,7 @@ http://DigitalBlake.com
 					var pageUrl = cleanURL(window.location.href);
 
 					// Will also work for relative and absolute hrefs
-					$menuRoot.find('ul li a').filter(function(index) {
+					$menuRoot.find('ul li a').filter(function() {
 						// Grab anchors that are part of the original menu structure and not anything added by the plugin
 						if ( $(this).hasClass('menu-item') ) {
 
