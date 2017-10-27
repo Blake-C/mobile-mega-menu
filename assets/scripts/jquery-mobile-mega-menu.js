@@ -67,25 +67,25 @@ http://DigitalBlake.com
 				var subLists = $menuRoot.find('ul');
 				var resizeTimer;
 
+				function minElHeight() {
+					subLists.toArray().forEach(function(element){
+						maxHeight = maxHeight > $(element).height() ? maxHeight : $(element).height();
+					});
+
+					$menuRoot.css('min-height', maxHeight + 50);
+				}
+
 				// use setTimeout to prevent function call on every pixel resize
 				// for better performance
 				$(window).resize(function() {
 					clearTimeout(resizeTimer);
 
 					resizeTimer = setTimeout(function() {
-						min_el_height();
+						minElHeight();
 					}, 500);
 				});
 
-				function min_el_height() {
-					subLists.toArray().forEach(function(element){
-						maxHeight = maxHeight > $(element).height() ? maxHeight : $(element).height();
-					});
-
-					$menuRoot.css('min-height', maxHeight + 50);
-				};
-
-				min_el_height(); // call function once on initialization
+				minElHeight(); // call function once on initialization
 
 				/* ------------------------- Set active menu item as is-in-view */
 				function cleanURL(href) {
