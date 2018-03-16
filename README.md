@@ -1,6 +1,8 @@
 Mobile Mega Menu
 ================
 
+***No longer actively maintained. If you have some fixes, feel free to make PR.***
+
 The mobile mega menu is designed to allow for deep menu structures to be navigated easily on mobile devices. It has a left-right animation that makes it easy to understand where you are in the menu hierarchy.
 
 ## Installation
@@ -58,7 +60,7 @@ $( '.mobile-mega-menu' ).mobileMegaMenu({
 ## Contact
    * Twitter: [https://twitter.com/BlakeCerecero][1]
    * Portfolio: [http://digitalblake.com/][2]
-   
+
 [1]: https://twitter.com/BlakeCerecero "https://twitter.com/BlakeCerecero"
 [2]: http://digitalblake.com/ "http://digitalblake.com/"
 
